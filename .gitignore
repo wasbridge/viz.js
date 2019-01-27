@@ -10,3 +10,4 @@ viz.js
 viz.es.js
 full.render.js
 lite.render.js
+.DS_store

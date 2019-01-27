@@ -104,12 +104,12 @@ build-full/expat-$(EXPAT_VERSION): sources/expat-$(EXPAT_VERSION).tar.bz2
 build-full/graphviz-$(GRAPHVIZ_VERSION): sources/graphviz-$(GRAPHVIZ_VERSION).tar.gz
 	mkdir -p $@
 	tar -zxf sources/graphviz-$(GRAPHVIZ_VERSION).tar.gz --strip-components 1 -C $@
-	cd build-full/graphviz-$(GRAPHVIZ_VERSION) && git apply ./../../graphviz_cycle_centroid.patch
+	cd build-full/graphviz-$(GRAPHVIZ_VERSION) && patch -p1 < ./../../graphviz_cycle_centroid.patch 
 
 build-lite/graphviz-$(GRAPHVIZ_VERSION): sources/graphviz-$(GRAPHVIZ_VERSION).tar.gz
 	mkdir -p $@
 	tar -zxf sources/graphviz-$(GRAPHVIZ_VERSION).tar.gz --strip-components 1 -C $@
-	cd build-lite/graphviz-$(GRAPHVIZ_VERSION) && git apply ./../../graphviz_cycle_centroid.patch
+	cd build-lite/graphviz-$(GRAPHVIZ_VERSION) && patch -p1 < ./../../graphviz_cycle_centroid.patch 
 
 sources:
 	mkdir -p sources
