@@ -1,15 +1,19 @@
 {
   "presets": [
-    ["env", {
-      "modules": false,
-      "targets": {
-        "browsers": ["last 2 versions"]
-      }
-    }]
+    "@babel/env",
+    {
+      "exclude": [
+        "transform-runtime",
+        "transform-regenerator"
+      ]
+    }
   ],
   "plugins": [
-    "transform-es2015-destructuring",
-    "transform-object-rest-spread",
-    "external-helpers"
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ]
   ]
 }
