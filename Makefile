@@ -20,7 +20,6 @@ deps-full: expat-full graphviz-full
 
 deps-lite: graphviz-lite
 
-
 clean:
 	rm -f build-main/viz.js build-main/viz.es.js viz.js viz.es.js
 	rm -f build-full/module.js build-full/pre.js full.render.js
@@ -37,6 +36,10 @@ build-main/viz.es.js: src/index.js .babelrc
 	mkdir -p build-main
 	node_modules/.bin/rollup --config rollup.config.es.js
 
+
+deploy: viz.js full.render.js
+	cp viz.js ./../sd.js/third_party/viz.js/viz.js
+	cp full.render.js ./../sd.js/third_party/viz.js/full.render.js
 
 viz.js: src/boilerplate/pre-main.js build-main/viz.js
 	sed -e s/{{VIZ_VERSION}}/$(VIZ_VERSION)/ -e s/{{EXPAT_VERSION}}/$(EXPAT_VERSION)/ -e s/{{GRAPHVIZ_VERSION}}/$(GRAPHVIZ_VERSION)/ -e s/{{EMSCRIPTEN_VERSION}}/$(EMSCRIPTEN_VERSION)/ $^ > $@
