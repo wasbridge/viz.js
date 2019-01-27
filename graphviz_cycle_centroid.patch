@@ -1,5 +1,5 @@
 diff --git a/lib/common/routespl.c b/lib/common/routespl.c
-index a5c7076c1..8e9513918 100644
+index a5c7076c1..6abf72ea1 100644
 --- a/lib/common/routespl.c
 +++ b/lib/common/routespl.c
 @@ -902,6 +902,244 @@ static pointf get_centroid(Agraph_t *g)
@@ -195,7 +195,7 @@ index a5c7076c1..8e9513918 100644
 +		cycle = (vec*)vec_get(cycles, c);
 +		cycle_len = vec_length(cycle);
 +
-+		if (cycle_len < generateDigraph)
++		if (cycle_len < min_size)
 +			continue;
 +
 +		if (!shortest || vec_length(shortest) > cycle_len) {
@@ -218,7 +218,7 @@ index a5c7076c1..8e9513918 100644
 +	}
 +
 +	//find the center of the shortest cycle containing this edge
-+	//cycles of length 2 do their own thing, we want 3 or greater
++	//cycles of length 2 do their own thing, we want 3 or
 +	vec* cycle = find_shortest_cycle_with_edge(cycles, edge, 3);
 +	size_t cycle_len;
 +	size_t cnt = 0;
